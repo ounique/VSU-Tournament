@@ -1,11 +1,45 @@
 package com.vsu.project.service.entity;
 
-public class User {
-    private String firstName;
-    private int role;
+import lombok.Getter;
+import lombok.Setter;
 
-    public User(String firstName, int role){
-        this.firstName = firstName;
-        this.role = role;
-    }
+import java.sql.Timestamp;
+
+public class User {
+
+    @Getter
+    @Setter
+    private long id;
+
+    @Getter
+    @Setter
+    private long studentBookId;
+
+    @Getter
+    @Setter
+    private long departmentId;
+
+    @Getter
+    @Setter
+    private String userName;
+
+    @Getter
+    @Setter
+    private String description;
+
+    @Getter
+    @Setter
+    private String password;
+
+    @Getter
+    @Setter
+    private long rating;
+
+    @Getter
+    @Setter
+    private Timestamp birthday;
+
+    @Getter
+    @Setter
+    private String picture;
 }
