@@ -1,45 +1,41 @@
 package com.vsu.project.service.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
+@Data
+@Entity
+@Table(name = "test")
 public class User {
 
-    @Getter
-    @Setter
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+//
+//    @Column(name = "student_book_id")
+//    private long studentBookId;
+//
+//    @Column(name = "department_id")
+//    private long departmentId;
 
-    @Getter
-    @Setter
-    private long studentBookId;
+    @NotNull
+    private String username;
+//
+//    @Column(name = "description")
+//    private String description;
 
-    @Getter
-    @Setter
-    private long departmentId;
-
-    @Getter
-    @Setter
-    private String userName;
-
-    @Getter
-    @Setter
-    private String description;
-
-    @Getter
-    @Setter
+    @NotNull
     private String password;
-
-    @Getter
-    @Setter
-    private long rating;
-
-    @Getter
-    @Setter
-    private Timestamp birthday;
-
-    @Getter
-    @Setter
-    private String picture;
+//
+//    @Column(name = "rating")
+//    private long rating;
+//
+//    @Column(name = "birthday")
+//    private Timestamp birthday;
+//
+//    @Column(name = "picture")
+//    private String picture;
 }
