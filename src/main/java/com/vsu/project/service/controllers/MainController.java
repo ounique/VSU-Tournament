@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.security.Principal;
+
 @Controller
 @RequestMapping("")
 public class MainController {
@@ -23,7 +25,9 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String index(){
+    public String index(ModelMap model, Principal principal){
+        String name = principal.getName(); //get logged in username
+        model.addAttribute("username", name);
         return "index";
     }
 
