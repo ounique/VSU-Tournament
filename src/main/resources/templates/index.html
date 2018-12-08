@@ -18,7 +18,7 @@
 
 </head>
 <body>
-<div th:replace="fragments/header :: header"/>
+<div th:replace="fragments/header-frag :: header-frag"/>
 
 <div class="container main-container">
     <div class="news-block" style="margin-top: 10px;">
@@ -169,20 +169,9 @@
         </div>
     </div>
 </div>
-<div class="container" style="padding: 0px;">
-    <div class="sponsors-block">
-        <section class="customer-logos slider">
-            <div class="slide"><img class="img-sponsors" src="https://upload.wikimedia.org/wikipedia/commons/5/55/DataArt%27s_Logo.png"></div>
-            <div class="slide"><img class="img-sponsors" src="https://www.polinaft.com/images/lukoil.png"></div>
-            <div class="slide"><img class="img-sponsors" src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Netcracker_Technology_logo.svg/1280px-Netcracker_Technology_logo.svg.png"></div>
-            <div class="slide"><img class="img-sponsors" src="https://upload.wikimedia.org/wikipedia/commons/5/55/DataArt%27s_Logo.png"></div>
-            <div class="slide"><img class="img-sponsors" src="https://www.polinaft.com/images/lukoil.png"></div>
-            <div class="slide"><img class="img-sponsors" src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Netcracker_Technology_logo.svg/1280px-Netcracker_Technology_logo.svg.png"></div>
-        </section>
-    </div>
-</div>
 
-<div th:replace="fragments/footer :: footer"/>
+<div th:replace="fragments/sponsors-frag :: sponsors-frag"/>
+<div th:replace="fragments/footer-frag :: footer-frag"/>
 
 <!-- BOOTSTRAP JS -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

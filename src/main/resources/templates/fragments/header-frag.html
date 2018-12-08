@@ -2,12 +2,14 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" th:href="@{/css/styles-header-footer.css}" href="../../css/styles-header-footer.css" />
 </head>
 <body>
-<div th:fragment="header">
+<div th:fragment="header-frag">
     <nav class="navbar navbar-expand-md navbar-dark main-menu">
         <div class="container">
-            <a class="navbar-brand" href="admin-index.html">
+            <a class="navbar-brand" href="">
                 <img th:src="@{/img/logo.png}" width="30" height="30" class="d-inline-block align-top" alt="">
                 VSU Tournaments
             </a>
