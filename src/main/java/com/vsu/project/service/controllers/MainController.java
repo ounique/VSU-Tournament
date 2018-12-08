@@ -25,9 +25,7 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String index(ModelMap model, Principal principal){
-        String name = principal.getName(); //get logged in username
-        model.addAttribute("username", name);
+    public String index(ModelMap model){
         return "index";
     }
 

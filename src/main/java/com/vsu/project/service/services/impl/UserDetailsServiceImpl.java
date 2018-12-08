@@ -17,11 +17,12 @@ import java.util.Set;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    @Autowired
     private UserRepository userRepository;
 
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    UserDetailsServiceImpl(UserRepository userRepository){
+        this.userRepository = userRepository;
+    }
 
     @Override
     @Transactional(readOnly = true)
@@ -32,9 +33,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //        for (Role role : user.getRoles()){
 //            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
 //        }
-        String a = bCryptPasswordEncoder.encode(user.getPassword());
-
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), a, grantedAuthorities);
+        String a = new BCryptPasswordEncoder().encode(user.getPassword());
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
 //        return null;
     }
 }

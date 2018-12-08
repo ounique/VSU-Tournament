@@ -4,10 +4,11 @@ import com.vsu.project.service.controllers.ErrorController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Controller;
+import org.springframework.context.annotation.Configuration;
 
-@Controller
+@Configuration
 public class ErrorConfiguration {
+
     @Autowired
     private ErrorAttributes errorAttributes;
 

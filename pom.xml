@@ -48,9 +48,12 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.jtwig</groupId>
-			<artifactId>jtwig-spring-boot-starter</artifactId>
-			<version>5.87.0.RELEASE</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
