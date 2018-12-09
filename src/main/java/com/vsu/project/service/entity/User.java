@@ -24,9 +24,9 @@ public class User {
     @NotNull
     private long studentBookId;
 
-    @Column(name = "department_id")
-    @NotNull
-    private long departmentId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id", nullable = false)
+    private Department department;
 
     @NotNull
     private String username;

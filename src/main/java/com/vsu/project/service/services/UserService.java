@@ -13,4 +13,5 @@ public interface UserService {
     User updateUser(User user);
     List<User> getAll();
     List<User> getUsersByRole(UserRole role);
+    List<User> getUsersByRole(UserRole role, int count);
 }

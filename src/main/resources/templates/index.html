@@ -22,6 +22,11 @@
 <div th:replace="fragments/header-frag :: header-frag"/>
 
 <div class="container main-container">
+    <div th:if="${errorMessage}">
+        <div class="alert alert-danger" style="margin-top: 10px;">
+            <p style="font-size: 15px;"><span th:text="${errorMessage}"></span></p>
+        </div>
+    </div>
     <div class="news-block" style="margin-top: 10px;">
         <h4 class="main-title">
             <img class="mr-2" src="https://img.icons8.com/color/50/ffffff/event-accepted.png" style="border-radius: 5px;" width="30" height="30" alt="win">

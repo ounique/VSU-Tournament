@@ -49,8 +49,15 @@ public class UserServiceImpl implements UserService {
         users.sort((a,b) -> {
             return a.getRating() > b.getRating() ? -1 : 1;
         });
-        if (users.size() > 6)
-            return users.subList(0,6);
+        return users;
+    }
+
+    @Override
+    public List<User> getUsersByRole(UserRole role, int count) {
+        List<User> users = userRepository.findAllByRole(role);
+        users.sort((a,b) -> a.getRating() > b.getRating() ? -1 : 1);
+        if (users.size() > count)
+            return users.subList(0,count);
         else
             return users;
     }
