@@ -2,11 +2,14 @@ package com.vsu.project.service.services.impl;
 
 import com.vsu.project.service.entity.Tournament;
 import com.vsu.project.service.entity.User;
+import com.vsu.project.service.entity.enums.UserRole;
 import com.vsu.project.service.repository.UserRepository;
 import com.vsu.project.service.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -38,6 +41,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAll() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public List<User> getUsersByRole(UserRole role) {
+        List<User> users = userRepository.findAllByRole(role);
+        users.sort((a,b) -> {
+            return a.getRating() > b.getRating() ? -1 : 1;
+        });
+        if (users.size() > 6)
+            return users.subList(0,6);
+        else
+            return users;
     }
 
     @Override

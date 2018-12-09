@@ -1,6 +1,7 @@
 package com.vsu.project.service.services;
 
 import com.vsu.project.service.entity.User;
+import com.vsu.project.service.entity.enums.UserRole;
 
 import java.util.List;
 
@@ -11,4 +12,5 @@ public interface UserService {
     User findByUsername(String username);
     User updateUser(User user);
     List<User> getAll();
+    List<User> getUsersByRole(UserRole role);
 }

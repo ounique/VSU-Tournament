@@ -10,38 +10,27 @@ VALUES
   (7, 'Геологический', '', '')
 ;
 
-CREATE TABLE "users" (
-  "id" bigint NOT NULL,
-  "role_id" bigint NOT NULL,
-  "student_book_id" bigint NOT NULL,
-  "department_id" bigint NOT NULL,
-  "username" character varying NOT NULL,
-  "first_name" character varying NOT NULL,
-  "second_name" character varying NOT NULL,
-  "rating" bigint NOT NULL,
-  "password" character varying NOT NULL,
-  "description" character varying,
-  "birthday" timestamptz,
-  "picture" character varying,
-  "social_vk" character varying,
-  "social_inst" character varying,
-  "social_twi" character varying,
-  "social_fb" character varying,
-  CONSTRAINT users_pk PRIMARY KEY ("id")
-) WITH (
-OIDS=FALSE
-);
-
 INSERT INTO users
 (id, role_id, student_book_id, department_id, username, first_name, second_name, rating, password, description, picture)
 VALUES
   (1, 0, 80809090, 1, 'admin', 'Administrator', ' ', 100000, '', 'Администратор сервиса VSU Tournaments', 'http://www.monteirolobato.edu.br/public/assets/admin/images/avatars/avatar4_big.png'),
-  (1, 2, 80809090, 1, 'dataart', 'DataArt', ' ', 0, '', 'Администратор сервиса VSU Tournaments', 'http://www.monteirolobato.edu.br/public/assets/admin/images/avatars/avatar4_big.png'),
-  (1, 2, 80809090, 1, 'netcrk', 'NetCracker', ' ', 0, '', 'Администратор сервиса VSU Tournaments', 'http://www.monteirolobato.edu.br/public/assets/admin/images/avatars/avatar4_big.png'),
-  (1, 2, 80809090, 1, 'lukoil', 'ЛУКОИЛ', ' ', 0, '', 'Администратор сервиса VSU Tournaments', 'http://www.monteirolobato.edu.br/public/assets/admin/images/avatars/avatar4_big.png'),
-  (1, 2, 80809090, 1, 'inline', 'Ин Лайн', 'Груп', 100000, '', 'Администратор сервиса VSU Tournaments', 'http://www.monteirolobato.edu.br/public/assets/admin/images/avatars/avatar4_big.png'),
-  (1, 1, 80809090, 1, 'admin', 'Administrator', ' ', 100000, '', 'Администратор сервиса VSU Tournaments', 'http://www.monteirolobato.edu.br/public/assets/admin/images/avatars/avatar4_big.png'),
-  (1, 1, 80809090, 1, 'admin', 'Administrator', ' ', 100000, '', 'Администратор сервиса VSU Tournaments', 'http://www.monteirolobato.edu.br/public/assets/admin/images/avatars/avatar4_big.png'),
-  (1, 1, 80809090, 1, 'admin', 'Administrator', ' ', 100000, '', 'Администратор сервиса VSU Tournaments', 'http://www.monteirolobato.edu.br/public/assets/admin/images/avatars/avatar4_big.png'),
-  (1, 1, 80809090, 1, 'admin', 'Administrator', ' ', 100000, '', 'Администратор сервиса VSU Tournaments', 'http://www.monteirolobato.edu.br/public/assets/admin/images/avatars/avatar4_big.png'),
+  (2, 2, 80809090, 1, 'dataart', 'DataArt', ' ', 0, '', 'DataArt — международная сеть компаний, которые проектируют, разрабатывают, модернизирует и поддерживают IT-решения. В 17 центрах продаж и разработки DataArt работают более 2200 специалистов.', 'https://upload.wikimedia.org/wikipedia/commons/5/55/DataArt%27s_Logo.png'),
+  (3, 2, 80809090, 1, 'netcrk', 'NetCracker', ' ', 0, '', 'Netcracker Technology — дочерняя компания корпорации NEC, специализирующаяся на создании, внедрении и сопровождении систем эксплуатационной поддержки, систем поддержки бизнеса, а также SDN/NFV-решений для операторов связи, крупных предприятий и государственных учреждений.', 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Netcracker_Technology_logo.svg/1280px-Netcracker_Technology_logo.svg.png'),
+  (4, 2, 80809090, 1, 'lukoil', 'ЛУКОЙЛ', ' ', 0, '', 'ПАО «Лукойл» — российская нефтяная компания. Официальное название — ПАО «Нефтяная компания „Лукойл“» Наименование компании происходит от первых букв названий городов нефтяников и слова «ойл». Вторая после «Газпрома» по объёмам выручки компания в России.', 'https://www.polinaft.com/images/lukoil.png'),
+  (5, 2, 80809090, 1, 'inline', 'Ин Лайн', 'Груп', 156, '', 'Администратор сервиса VSU Tournaments', 'http://www.monteirolobato.edu.br/public/assets/admin/images/avatars/avatar4_big.png'),
+  (6, 1, 80809090, 1, 'user1', 'Елена', 'Бейлина', 685, '', 'Самое тупое, что можно делать - это быть недовольным своей жизнью. Как много в этом оправданий, как мало в этом смысла.', 'https://pic.sport.ua/images/news/0/8/112/orig_342444.jpg'),
+  (7, 1, 80809090, 1, 'user2', 'Алена', 'Поминова', 5622, '', 'Тяжело быть женщиной – нужно каждый день придумывать какие-нибудь капризы.', 'https://vokrug.tv/pic/news/2/6/e/d/26eda384c4e212f9f65c322521897891.jpg'),
+  (8, 1, 80809090, 1, 'user3', 'Александр', 'Смирнов', 545, '', 'Я очень богат! У меня два видящих глаза, рабочие руки и ноги, да и слышу вроде неплохо. Я вижу рассвет, закат, чувствую, живу моментом. Радуйтесь мелочам.', 'http://kak-bog.ru/sites/default/files/imagecache/height_200/brutalnyy_muzhchina.jpg'),
+  (9, 1, 80809090, 1, 'user4', 'Анатолий', 'Сидорчук', 3450, '', 'У меня свой путь к счастью... И я не люблю, когда мне навязывают чужие маршруты... ПОВЕРЬТЕ, за руль своей жизни я не посажу никого!', 'http://advicewoman.ru/wp-content/uploads/2017/05/kakim-dolzhen-byt-nastoyashiy-muzhchina.jpg')
+;
+
+INSERT INTO news
+(id, owner, title, description, date_created)
+VALUES
+  (1, 1, 'Мониторинг европейских проектов ВГУ успешно пройден!', 'Основная задача визита состояла в изучении эффективности реализации европейских проектов в ВГУ. ВГУ является одним из лидеров среди российских университетов по количеству реализуемых международных проектов, получивших поддержку в рамках программ Европейского Союза. В настоящее время университет реализует 35 проектов.', '07-12-2018'),
+  (2, 1, 'Дан старт новому европейскому проекту ВГУ', '29 ноября в стенах Европейского Центра Управления (Брюссель, Бельгия) прошло совещании координаторов новых проектов в сфере европейским исследований программы Эразмус+ «Проекты Акций имени Жана Монне – поиск ответов на вызовы в современной Европе», организатором которого стало Исполнительное агентство по образованию, культуре и аудиовизуальным средствам.', '07-12-2018'),
+  (3, 1, 'Представители ВГУ вошли в резерв управленческих кадров Воронежской области', '«Команда будущего» – конкурс в рамках проекта «Современное государственное управление». В Воронежской области его проводит Российская академия народного хозяйства и государственной службы при Президенте РФ (РАНХиГС) и Фонд «Центр стратегических разработок».', '06-12-2018'),
+  (4, 1, 'Чемпионами Всероссийского турнира физиков стала сборная ВГУ и ВГТУ', 'Всероссийский турнир физиков открылся 30 ноября и продлился до 4 декабря. В нем приняли участие представители восьми университетов: САФУ, МГУ, Высшая школа экономики, Южно-Уральский университет, МФТИ, Воронежский Государственный университет и Воронежский технический университет, представляющие одну команду, а также Пензенский Государственный университет.', '06-12-2018'),
+  (5, 1, 'Студенты ВГУ стали победителями первого хакатона единого института развития в жилищной сфере', 'Студенты Воронежского государственного университета стали победителями первого хакатона единого института развития в жилищной сфере ДОМ.РФ, который прошел в Воронеже.', '05-12-2018'),
+  (6, 1, 'Студенты Борисоглебского филиала ВГУ стали победителями конкурса премий Молодежного правительства Воронежской области', 'По результатам очной защиты проект «Запечатли момент» получил грант Молодежного правительства Воронежской области в размере 30 тысяч рублей. Цель проекта – обучение основам фотографии детей и подростков с ограниченными возможностями здоровья.', '05-12-2018')
 ;

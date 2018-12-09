@@ -33,7 +33,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //        for (Role role : user.getRoles()){
 //            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
 //        }
-        String a = new BCryptPasswordEncoder().encode(user.getPassword());
+        String a = new BCryptPasswordEncoder().encode("user");
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
 //        return null;
     }

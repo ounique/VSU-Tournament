@@ -12,6 +12,7 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" th:href="@{/css/styles-index.css}" href="../../css/styles-index.css" />
     <link rel="stylesheet" th:href="@{/css/infinite-slider.css}" href="../../css/infinite-slider.css" />
+    <link rel="stylesheet" th:href="@{/css/styles-header-footer.css}" href="../../css/styles-header-footer.css" />
 
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,700,800" rel="stylesheet">
@@ -28,25 +29,10 @@
             <a href="" style="font-size: 15px;">Посмотреть все</a>
         </h4>
         <div class="row mr-1 ml-1 mt-3">
-            <div class="news">
-                <h4 class="news-title"><img class="mr-2" src="https://img.icons8.com/material/50/cccccc/megaphone.png" style="border-radius: 5px;" width="25" height="25" alt="win">Заголовок новости</h4>
-                <p class="news-subtitle">Некоторый текст новости который никому не интересен</p>
-                <p class="news-subscribe">Опубликовано 08-09-2018</p>
-            </div>
-            <div class="news">
-                <h4 class="news-title"><img class="mr-2" src="https://img.icons8.com/material/50/cccccc/megaphone.png" style="border-radius: 5px;" width="25" height="25" alt="win">Заголовок новости</h4>
-                <p class="news-subtitle">Некоторый текст новости который никому не интересен</p>
-                <p class="news-subscribe">Опубликовано 08-09-2018</p>
-            </div>
-            <div class="news">
-                <h4 class="news-title"><img class="mr-2" src="https://img.icons8.com/material/50/cccccc/megaphone.png" style="border-radius: 5px;" width="25" height="25" alt="win">Заголовок новости</h4>
-                <p class="news-subtitle">Некоторый текст новости который никому не интересен</p>
-                <p class="news-subscribe">Опубликовано 08-09-2018</p>
-            </div>
-            <div class="news">
-                <h4 class="news-title"><img class="mr-2" src="https://img.icons8.com/material/50/cccccc/megaphone.png" style="border-radius: 5px;" width="25" height="25" alt="win">Заголовок новости</h4>
-                <p class="news-subtitle">Некоторый текст новости который никому не интересен</p>
-                <p class="news-subscribe">Опубликовано 08-09-2018</p>
+            <div class="news" th:each="newspaper : ${news}">
+                <h4 class="news-title"><img class="mr-2" src="https://img.icons8.com/material/50/cccccc/megaphone.png" style="border-radius: 5px;" width="25" height="25" alt="win"><span th:text="${newspaper.title}"></span></h4>
+                <p class="news-subtitle"><span th:text="${newspaper.description}"></span></p>
+                <p class="news-subscribe">Опубликовано <span th:text="${newspaper.dateCreated}"></span> от <a th:href="${newspaper.user.id}"><span th:text="${newspaper.user.username}"></span></a></p>
             </div>
         </div>
     </div>
@@ -127,7 +113,7 @@
         </div>
     </div>
     <div class="row" style="padding: 20px;">
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="col-md-12" style="margin-top: 0px; ">
                 <div class="row" style="margin-top: 0px; padding-right: 15px; margin-left: -30px;">
                     <img class="mr-1" src="https://img.icons8.com/color/50/666666/birthday-cake.png" style="border-radius: 5px;" width="40" height="40" alt="win"><h4 class="main-tournaments-title">Сегодня празднуют День Рождения</h4>
@@ -146,24 +132,12 @@
                 </div>
             </div>
         </div>
-        <div class="top-users-block col-md-3" style="margin-top: 10px;">
+        <div class="top-users-block col-md-4" style="margin-top: 10px;">
             <h4 class="winner-title" style="text-align: center;"><img class="mr-2" src="https://img.icons8.com/color/50/ffffff/star-half-empty.png" style="border-radius: 5px;" width="30" height="30" alt="win">Рейтинг</h4>
             <div class="line"></div>
             <div class="users">
-                <div class="user-block">
-                    <p class="user-winner-name"><img class="mr-2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxO_i_Va1kmSnEuc79-CAgLhmmnyaSIBjeqXqhsuD3tpyFSD7Q" style="border-radius: 5px;" width="30" height="30" alt="avatar">Иван Иванов (68745 баллов)</p>
-                </div>
-                <div class="user-block">
-                    <p class="user-winner-name"><img class="mr-2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxO_i_Va1kmSnEuc79-CAgLhmmnyaSIBjeqXqhsuD3tpyFSD7Q" style="border-radius: 5px;" width="30" height="30" alt="avatar">Иван Иванов (68745 баллов)</p>
-                </div>
-                <div class="user-block">
-                    <p class="user-winner-name"><img class="mr-2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxO_i_Va1kmSnEuc79-CAgLhmmnyaSIBjeqXqhsuD3tpyFSD7Q" style="border-radius: 5px;" width="30" height="30" alt="avatar">Иван Иванов (68745 баллов)</p>
-                </div>
-                <div class="user-block">
-                    <p class="user-winner-name"><img class="mr-2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxO_i_Va1kmSnEuc79-CAgLhmmnyaSIBjeqXqhsuD3tpyFSD7Q" style="border-radius: 5px;" width="30" height="30" alt="avatar">Иван Иванов (68745 баллов)</p>
-                </div>
-                <div class="user-block">
-                    <p class="user-winner-name"><img class="mr-2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxO_i_Va1kmSnEuc79-CAgLhmmnyaSIBjeqXqhsuD3tpyFSD7Q" style="border-radius: 5px;" width="30" height="30" alt="avatar">Иван Иванов (68745 баллов)</p>
+                <div class="user-block" th:each="user : ${users}">
+                    <p class="user-winner-name"><img class="mr-2" th:src="${user.picture}" style="border-radius: 5px;" width="30" height="30" alt="avatar"><span th:text="|${user.firstName} ${user.secondName}|"></span> (<span th:text="${user.rating}"></span> баллов)</p>
                 </div>
             </div>
         </div>

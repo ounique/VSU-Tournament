@@ -1,5 +1,6 @@
 package com.vsu.project.service.entity;
 
+import com.vsu.project.service.entity.enums.UserRole;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -15,6 +16,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name = "role_id")
+    @NotNull
+    private UserRole role;
+
     @Column(name = "student_book_id")
     @NotNull
     private long studentBookId;
@@ -26,6 +31,14 @@ public class User {
     @NotNull
     private String username;
 
+    @Column(name = "first_name")
+    @NotNull
+    private String firstName;
+
+    @Column(name = "second_name")
+    @NotNull
+    private String secondName;
+
     private String description;
 
     @NotNull
@@ -34,8 +47,19 @@ public class User {
     @NotNull
     private long rating;
 
-    @NotNull
     private Timestamp birthday;
 
     private String picture;
+
+    @Column(name = "social_vk")
+    private String linkVK;
+
+    @Column(name = "social_fb")
+    private String linkFB;
+
+    @Column(name = "social_inst")
+    private String linkINS;
+
+    @Column(name = "social_twi")
+    private String linkTWI;
 }
