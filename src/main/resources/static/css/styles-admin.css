@@ -44,3 +44,11 @@ body{
 ._info{
     margin: 20px;
 }
+
+.add-user{
+    width: 700px;
+}
+
+.input-title{
+    width: 250px;
+}

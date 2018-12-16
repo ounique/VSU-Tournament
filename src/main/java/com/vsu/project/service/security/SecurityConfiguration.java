@@ -1,6 +1,7 @@
 package com.vsu.project.service.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vsu.project.service.entity.enums.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,20 +40,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
 
-        // The pages does not require login
         http.authorizeRequests()
                 .antMatchers("/", "/login", "/logout")
-                .permitAll();
-
-        // For ADMIN only.
-        http.authorizeRequests()
+                    .permitAll()
                 .antMatchers("/admin")
-                .access("hasRole('Administrator')");
-
-        // When the user has logged in as XX.
-        // But access a page that requires role YY,
-        // AccessDeniedException will be thrown.
-        http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
+                    .hasRole(UserRole.Administrator.name())
+                .and()
+                    .exceptionHandling().accessDeniedPage("/403")
+        ;
 
         // Config for Login Form
         http
@@ -70,7 +65,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .and()
                     .logout()
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/logoutSuccessful");
+                        .logoutSuccessUrl("/");
     }
 
     @Autowired

@@ -32,7 +32,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         try {
             User user = userRepository.findByUsername(username);
             Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-            grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole().name()));
+            grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()));
             return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
         } catch (Exception e){
             throw new LoginProcessException("Пользователя с таким именем не существует !");

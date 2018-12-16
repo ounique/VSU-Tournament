@@ -40,6 +40,12 @@ public class ErrorController implements org.springframework.boot.web.servlet.err
         return "redirect:/";
     }
 
+    @RequestMapping("/403")
+    public String getErrorAccessForbiden(ModelMap modelMap){
+        modelMap.addAttribute("errorMessage", "Доступ к запрашиваемой страницы ограничен !");
+        return "redirect:/";
+    }
+
     private int getErrorCode(HttpServletRequest httpRequest) {
         return (Integer) httpRequest
                 .getAttribute("javax.servlet.error.status_code");

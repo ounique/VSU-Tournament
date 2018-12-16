@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 public class News {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)

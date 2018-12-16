@@ -16,7 +16,7 @@ import java.sql.Timestamp;
 public class Tournament {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
