@@ -22,20 +22,85 @@
 
 <div class="container-fluid" style="background-color: #fcfcfc; padding-bottom: 40px;">
     <div class="container main-container">
-        <div class="user-info-block">
+        <form class="user-info-block" action="/profile/update" method="post">
             <img th:src="${user.picture}" style="border-radius: 100px;" width="100" height="100" alt="avatar">
-            <p class="user-info-name"><span th:text="|${user.firstName} ${user.SecondName}|"></span> <a th:if="${isUserProfile}" th:href="|/profile/${user.id}/edit|"><img src="https://img.icons8.com/material/50/666666/edit.png" width="20" height="20" alt="edit"> (редактировать)</a></p>
-            <div class="social-links">
-                <img th:if="${user.linkINS}" class="social-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/480px-Instagram_icon.png" width="20" height="20" alt="inst">
-                <img th:if="${user.linkVK}" class="social-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/VK.com-logo.svg/240px-VK.com-logo.svg.png" width="20" height="20" alt="inst">
-                <img th:if="${user.linkFB}" class="social-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Facebook_icon_2013.svg/2000px-Facebook_icon_2013.svg.png" width="20" height="20" alt="inst">
-                <img th:if="${user.linkTWI}" class="social-item" src="https://upload.wikimedia.org/wikipedia/lv/thumb/9/9f/Twitter_bird_logo_2012.svg/173px-Twitter_bird_logo_2012.svg.png" width="20" height="20" alt="inst">
+            <div class="input-group mb-5 mt-5">
+                <div class="input-group-prepend">
+					    	<span class="input-group-text" id="basic-addon1">
+					    		<img class="social-item" src="https://img.icons8.com/color/48/000000/picture.png" width="20" height="20" alt="inst">
+					    		Фото профиля
+					    	</span>
+                </div>
+                <input type="text" name="picture" class="form-control" th:value="${user.picture}" placeholder="Вставьте ссылку на изображение" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+					    	<span class="input-group-text" id="basic-addon1" style="width: 150px;">
+					    		Фамилия
+					    	</span>
+                </div>
+                <input type="text" name="secondName" class="form-control" th:value="${user.secondName}" placeholder="Введите фамилию" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+					    	<span class="input-group-text" id="basic-addon1" style="width: 150px;">
+					    		Имя
+					    	</span>
+                </div>
+                <input type="text" name="firstName" class="form-control" placeholder="Введите имя" th:value="${user.firstName}" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-5">
+                <div class="input-group-prepend">
+					    	<span class="input-group-text" id="basic-addon1" style="width: 150px;">
+					    		Пароль
+					    	</span>
+                </div>
+                <input type="text" name="password" class="form-control" placeholder="Введите пароль" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+					    	<span class="input-group-text" id="basic-addon1" style="width: 150px;">
+					    		<img class="social-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/480px-Instagram_icon.png" width="20" height="20" alt="inst">
+					    		Instagram
+					    	</span>
+                </div>
+                <input type="text" name="linkINS" class="form-control" th:value="${user.linkINS}" placeholder="Вставьте сюда ссылку" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+					    	<span class="input-group-text" id="basic-addon1" style="width: 150px;">
+					    		<img class="social-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/VK.com-logo.svg/240px-VK.com-logo.svg.png" width="20" height="20" alt="inst">
+					    		Вконтакте
+					    	</span>
+                </div>
+                <input type="text" name="linkVK" class="form-control" th:value="${user.linkVK}" placeholder="Вставьте сюда ссылку" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+					    	<span class="input-group-text" id="basic-addon1" style="width: 150px;">
+					    		<img class="social-item" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Facebook_icon_2013.svg/2000px-Facebook_icon_2013.svg.png" width="20" height="20" alt="inst">
+					    		Facebook
+					    	</span>
+                </div>
+                <input type="text" name="linkFB" class="form-control" th:value="${user.linkFB}" placeholder="Вставьте сюда ссылку" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+					    	<span class="input-group-text" id="basic-addon1" style="width: 150px;">
+					    		<img class="social-item" src="https://upload.wikimedia.org/wikipedia/lv/thumb/9/9f/Twitter_bird_logo_2012.svg/173px-Twitter_bird_logo_2012.svg.png" width="20" height="20" alt="inst">
+					    		Twitter
+					    	</span>
+                </div>
+                <input type="text" name="linkTWI" class="form-control" placeholder="Вставьте сюда ссылку" th:value="${user.linkTWI}" aria-label="Username" aria-describedby="basic-addon1">
             </div>
             <div class="about">
                 <p class="about-title">О себе</p>
-                <p class="about-subtitle"><span th:if="${user.description}" th:text="${user.description}"></span><span th:if="!${user.description}" th:text="В данный момент это поле не заполнено."></span></p>
+                <textarea name="description" rows="4" cols="50" style="width: 100%; border-radius: 10px; background-color: rgba(255,255,255,0.5);" th:text="${user.description}"></textarea>
             </div>
-        </div>
+            <div class="mt-5">
+                <button type="submit" class="btn btn-success" style="width: 250px;"><img src="https://img.icons8.com/color/48/000000/save-close.png" width="25"> Сохранить изменения</button> <a th:href="|/profile/${user.id}|" class="btn btn-danger" style="width: 200px;"><img src="https://img.icons8.com/color/48/000000/close-window.png" width="25"> Отмена</a>
+            </div>
+        </form>
     </div>
 </div>
 <div class="black-line"></div>

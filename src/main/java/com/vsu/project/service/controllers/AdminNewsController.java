@@ -29,41 +29,41 @@ public class AdminNewsController {
         this.updater = updater;
     }
 
-    @GetMapping("/news")
-    public String getAllUsers(ModelMap modelMap){
-        modelMap.addAttribute("news", newsService.getAll());
-        return "admin/admin-news";
-    }
-
-    @GetMapping("/news/edit/{id}")
-    public String editUser(@PathVariable long id, ModelMap modelMap){
-        modelMap.addAttribute("newsPaper", newsService.getById(id));
-        return "admin/admin-edit-news";
-    }
-
-    @GetMapping("/news/add")
-    public String addUser(ModelMap modelMap){
-        return "admin/admin-add-news";
-    }
-
-    @PostMapping(value = "/users/add", produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String updateUser(@RequestBody MultiValueMap<String, String> map, ModelMap modelMap){
-        User user =  new User();
-        user = updater.updateUser(user, map);
-        userService.addUser(user);
-        modelMap.addAttribute("alertMessage", "Пользователь " + user.getUsername() + " успешно создан !");
-        modelMap.addAttribute("users", userService.getAll());
-        return "admin/admin-users";
-    }
-
-    @PostMapping(value = "/users/update/{id}", produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String updateUser(@PathVariable long id, @RequestBody MultiValueMap<String, String> map, ModelMap modelMap){
-        User user = userService.getById(id);
-        user = updater.updateUser(user, map);
-        userService.updateUser(user);
-        modelMap.addAttribute("alertMessage", "Пользователь " + user.getUsername() + " успешно изменен !");
-        modelMap.addAttribute("users", userService.getAll());
-        return "admin/admin-users";
-    }
+//    @GetMapping("/news")
+//    public String getAllUsers(ModelMap modelMap){
+//        modelMap.addAttribute("news", newsService.getAll());
+//        return "admin/admin-news";
+//    }
+//
+//    @GetMapping("/news/edit/{id}")
+//    public String editUser(@PathVariable long id, ModelMap modelMap){
+//        modelMap.addAttribute("newsPaper", newsService.getById(id));
+//        return "admin/admin-edit-news";
+//    }
+//
+//    @GetMapping("/news/add")
+//    public String addUser(ModelMap modelMap){
+//        return "admin/admin-add-news";
+//    }
+//
+//    @PostMapping(value = "/users/add", produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+//    public String updateUser(@RequestBody MultiValueMap<String, String> map, ModelMap modelMap){
+//        User user =  new User();
+//        user = updater.updateUser(user, map);
+//        userService.addUser(user);
+//        modelMap.addAttribute("alertMessage", "Пользователь " + user.getUsername() + " успешно создан !");
+//        modelMap.addAttribute("users", userService.getAll());
+//        return "admin/admin-users";
+//    }
+//
+//    @PostMapping(value = "/users/update/{id}", produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+//    public String updateUser(@PathVariable long id, @RequestBody MultiValueMap<String, String> map, ModelMap modelMap){
+//        User user = userService.getById(id);
+//        user = updater.updateUser(user, map);
+//        userService.updateUser(user);
+//        modelMap.addAttribute("alertMessage", "Пользователь " + user.getUsername() + " успешно изменен !");
+//        modelMap.addAttribute("users", userService.getAll());
+//        return "admin/admin-users";
+//    }
 
 }

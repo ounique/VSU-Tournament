@@ -1,6 +1,7 @@
 package com.vsu.project.service.controllers;
 
 import com.vsu.project.service.entity.User;
+import com.vsu.project.service.exceptions.UsernameAlreadyExistsException;
 import com.vsu.project.service.services.DepartmentService;
 import com.vsu.project.service.services.UserService;
 import com.vsu.project.service.utils.Updater;
@@ -27,6 +28,13 @@ public class AdminUsersController {
         this.updater = updater;
     }
 
+    @ExceptionHandler(UsernameAlreadyExistsException.class)
+    public String usernameAlreadyExists(ModelMap modelMap){
+        modelMap.addAttribute("users", userService.getAll());
+        modelMap.addAttribute("alertMessage", "Пользователь с таким именем уже существует !");
+        return "admin/admin-users";
+    }
+
     @GetMapping("/users")
     public String getAllUsers(ModelMap modelMap){
         modelMap.addAttribute("users", userService.getAll());
@@ -47,7 +55,7 @@ public class AdminUsersController {
     }
 
     @PostMapping(value = "/users/add", produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String updateUser(@RequestBody MultiValueMap<String, String> map, ModelMap modelMap){
+    public String addUser(@RequestBody MultiValueMap<String, String> map, ModelMap modelMap){
         User user =  new User();
         user = updater.updateUser(user, map);
         userService.addUser(user);

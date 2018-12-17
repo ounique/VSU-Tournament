@@ -3,6 +3,7 @@ package com.vsu.project.service.services.impl;
 import com.vsu.project.service.entity.Tournament;
 import com.vsu.project.service.entity.User;
 import com.vsu.project.service.entity.enums.UserRole;
+import com.vsu.project.service.exceptions.UsernameAlreadyExistsException;
 import com.vsu.project.service.repository.UserRepository;
 import com.vsu.project.service.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User addUser(User user) {
-        return userRepository.saveAndFlush(user);
+        if (usernameAlreadyExists(user.getUsername()))
+            return userRepository.saveAndFlush(user);
+        else
+            throw new UsernameAlreadyExistsException("Username = " + user.getUsername() + " already exists");
     }
 
     @Override
@@ -65,5 +69,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByUsername(String username){
         return userRepository.findByUsername(username);
+    }
+
+    private boolean usernameAlreadyExists(String username){
+        if (userRepository.findByUsername(username) != null)
+            return false;
+        return true;
     }
 }
