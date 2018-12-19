@@ -73,4 +73,12 @@ public class AdminUsersController {
         modelMap.addAttribute("users", userService.getAll());
         return "admin/admin-users";
     }
+
+    @PostMapping(value = "/users/delete/{id}", produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String deleteUser(@PathVariable long id, ModelMap modelMap){
+        userService.delete(id);
+        modelMap.addAttribute("alertMessage", "Пользователь успешно удален !");
+        modelMap.addAttribute("users", userService.getAll());
+        return "admin/admin-users";
+    }
 }

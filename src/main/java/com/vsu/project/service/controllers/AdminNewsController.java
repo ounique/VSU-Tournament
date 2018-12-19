@@ -1,5 +1,6 @@
 package com.vsu.project.service.controllers;
 
+import com.vsu.project.service.entity.News;
 import com.vsu.project.service.entity.User;
 import com.vsu.project.service.services.DepartmentService;
 import com.vsu.project.service.services.NewsService;
@@ -7,6 +8,8 @@ import com.vsu.project.service.services.UserService;
 import com.vsu.project.service.utils.Updater;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.MultiValueMap;
@@ -29,41 +32,51 @@ public class AdminNewsController {
         this.updater = updater;
     }
 
-//    @GetMapping("/news")
-//    public String getAllUsers(ModelMap modelMap){
-//        modelMap.addAttribute("news", newsService.getAll());
-//        return "admin/admin-news";
-//    }
-//
-//    @GetMapping("/news/edit/{id}")
-//    public String editUser(@PathVariable long id, ModelMap modelMap){
-//        modelMap.addAttribute("newsPaper", newsService.getById(id));
-//        return "admin/admin-edit-news";
-//    }
-//
-//    @GetMapping("/news/add")
-//    public String addUser(ModelMap modelMap){
-//        return "admin/admin-add-news";
-//    }
-//
-//    @PostMapping(value = "/users/add", produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-//    public String updateUser(@RequestBody MultiValueMap<String, String> map, ModelMap modelMap){
-//        User user =  new User();
-//        user = updater.updateUser(user, map);
-//        userService.addUser(user);
-//        modelMap.addAttribute("alertMessage", "Пользователь " + user.getUsername() + " успешно создан !");
-//        modelMap.addAttribute("users", userService.getAll());
-//        return "admin/admin-users";
-//    }
-//
-//    @PostMapping(value = "/users/update/{id}", produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-//    public String updateUser(@PathVariable long id, @RequestBody MultiValueMap<String, String> map, ModelMap modelMap){
-//        User user = userService.getById(id);
-//        user = updater.updateUser(user, map);
-//        userService.updateUser(user);
-//        modelMap.addAttribute("alertMessage", "Пользователь " + user.getUsername() + " успешно изменен !");
-//        modelMap.addAttribute("users", userService.getAll());
-//        return "admin/admin-users";
-//    }
+    @GetMapping("/news")
+    public String getAllNews(ModelMap modelMap){
+        modelMap.addAttribute("news", newsService.getAll());
+        return "admin/admin-news";
+    }
+
+    @GetMapping("/news/edit/{id}")
+    public String editNewspaper(@PathVariable long id, ModelMap modelMap){
+        modelMap.addAttribute("news", newsService.getById(id));
+        return "admin/admin-edit-news";
+    }
+
+    @GetMapping("/news/add")
+    public String addNews(ModelMap modelMap){
+        return "admin/admin-add-news";
+    }
+
+    @PostMapping(value = "/news/add", produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String addNews(@RequestBody MultiValueMap<String, String> map, ModelMap modelMap){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findByUsername(((org.springframework.security.core.userdetails.User)auth.getPrincipal()).getUsername());
+        News news =  new News();
+        news = updater.updateNews(news, map, user);
+        newsService.addNews(news);
+        modelMap.addAttribute("alertMessage", "Новость успешно создана !");
+        modelMap.addAttribute("news", newsService.getAll());
+        return "admin/admin-news";
+    }
+
+    @PostMapping(value = "/news/update/{id}", produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String updateNews(@PathVariable long id, @RequestBody MultiValueMap<String, String> map, ModelMap modelMap){
+        News news =  newsService.getById(id);
+        news = updater.updateNews(news, map, news.getUser());
+        newsService.updateNews(news);
+        modelMap.addAttribute("alertMessage", "Новость успешно обновлена !");
+        modelMap.addAttribute("news", newsService.getAll());
+        return "admin/admin-news";
+    }
+
+    @PostMapping(value = "/news/delete/{id}", produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String deleteNews(@PathVariable long id, ModelMap modelMap){
+        newsService.delete(id);
+        modelMap.addAttribute("alertMessage", "Новость успешно удалена !");
+        modelMap.addAttribute("news", newsService.getAll());
+        return "admin/admin-news";
+    }
 
 }

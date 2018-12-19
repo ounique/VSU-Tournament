@@ -37,7 +37,7 @@
             <div class="news" th:each="newspaper : ${news}">
                 <h4 class="news-title"><img class="mr-2" src="https://img.icons8.com/material/50/cccccc/megaphone.png" style="border-radius: 5px;" width="25" height="25" alt="win"><span th:text="${newspaper.title}"></span></h4>
                 <p class="news-subtitle"><span th:text="${newspaper.description}"></span></p>
-                <p class="news-subscribe">Опубликовано <span th:text="${newspaper.dateCreated}"></span> от <a th:href="${newspaper.user.id}"><span th:text="${newspaper.user.username}"></span></a></p>
+                <p class="news-subscribe">Опубликовано <span th:text="${newspaper.dateCreated}"></span> от <a th:href="|/profile/${newspaper.user.id}|"><span th:text="${newspaper.user.username}"></span></a></p>
             </div>
         </div>
     </div>

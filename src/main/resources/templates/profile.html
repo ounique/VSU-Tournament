@@ -33,7 +33,7 @@
             </div>
             <div class="about">
                 <p class="about-title">О себе</p>
-                <p class="about-subtitle"><span th:if="${user.description}" th:text="${user.description}"></span><span th:if="!${user.description}" th:text="В данный момент это поле не заполнено."></span></p>
+                <p class="about-subtitle"><span th:if="${user.description}" th:text="${user.description}"></span><span th:if="!${user.description}">В данный момент это поле не заполнено.</span></p>
             </div>
         </div>
     </div>

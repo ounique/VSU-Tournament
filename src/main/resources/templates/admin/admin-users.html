@@ -55,7 +55,9 @@
             <td><span th:text="${user.description}"></span></td>
             <td>
                 <a class="btn btn-warning" style="width: 150px; margin-top: 10px;" th:href="|/admin/users/edit/${user.id}|"><img src="https://img.icons8.com/color/48/000000/edit-property.png" width="25"> Изменить</a>
-                <a class="btn btn-danger"  style="width: 150px; margin-top: 10px;" th:href="|/admin/users/delete/${user.id}|"><img src="https://img.icons8.com/color/48/000000/litter-disposal.png" width="25"> Удалить</a>
+                <form th:action="|/admin/users/delete/${user.id}|" method="post">
+                    <button type="submit" class="btn btn-danger"  style="width: 150px; margin-top: 10px;"><img src="https://img.icons8.com/color/48/000000/litter-disposal.png" width="25"> Удалить</button>
+                </form>
             </td>
         </tr>
         </tbody>

@@ -1,5 +1,6 @@
 package com.vsu.project.service.utils;
 
+import com.vsu.project.service.entity.News;
 import com.vsu.project.service.entity.User;
 import com.vsu.project.service.entity.enums.UserRole;
 import com.vsu.project.service.exceptions.UsernameAlreadyExistsException;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.MultiValueMap;
+
+import java.sql.Timestamp;
 
 @Component
 public class Updater {
@@ -82,5 +85,21 @@ public class Updater {
             user.setPicture(URL_DEFAULT_PICTURE);
         }
         return user;
+    }
+
+    public News updateNews(News news, MultiValueMap<String, String> params, User user){
+        params.forEach((k, v)->{
+            switch (k){
+                case "title":
+                    news.setTitle(params.getFirst(k));
+                    break;
+                case "description":
+                    news.setDescription(params.getFirst(k));
+                    break;
+            }
+        });
+        news.setDateCreated(new Timestamp(System.currentTimeMillis()));
+        news.setUser(user);
+        return news;
     }
 }
